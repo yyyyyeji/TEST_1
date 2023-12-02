@@ -83,17 +83,17 @@ class Yacht_Dice : # 점수기록 및 플레이 클래스
     count_sixes = self.dice1.count(6)*6
     self.score = min(count_sixes, 30)
 
-  def Four_of_a_kind(self) : # 동일한 주사위 눈이 4개 이상일 때, 총합. 최대 24점
+  def Four_of_a_kind(self) : # 동일한 주사위 눈이 4개 이상일 때, 주사위 눈의 총합. 최대 30점
     for i in range(6) :
       if self.dice1.count(i+1) >= 4 :
-        self.score = min(self.dice1.count(i+1)*(i+1), 24)
+        self.score = min(sum(self.dice1), 30)
 
-  def Full_House(self) : # 동일한 주사위 눈이 각각 3개, 2개일 때, 5개의 총합. 최대 28점
+  def Full_House(self) : # 동일한 주사위 눈이 각각 3개, 2개일 때, 5개의 총합. 최대 30점
     for i in range(6) :
       if self.dice1.count(i+1) == 3 :
         for j in range(6) :
           if self.dice1.count(j+1) == 2 :
-            self.score = min(3*(i+1) + 2*(j+1), 28)
+            self.score = min(3*(i+1) + 2*(j+1), 30)
 
   def Little_Straight(self) : # 주사위 눈이 각각 1,2,3,4 or 2,3,4,5 or 3,4,5,6일 때, 고정 15점
     if [True for i in [1,2,3,4] if i in self.dice1] == [True, True, True, True] \
